@@ -16,8 +16,9 @@ public class Test1  {
         ac.addPersoneWorker("Olga", "Epam");
         ac.showAll();
 
+
         try{
-            FileOutputStream fos = new FileOutputStream("Student.ser");
+            FileOutputStream fos = new FileOutputStream("Academy.ser");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(ac);
             oos.close();
@@ -27,9 +28,10 @@ public class Test1  {
             System.out.println(ioe);
         }
 
+
         Academy o =null;
         try{
-            FileInputStream fis = new FileInputStream("Student.ser");
+            FileInputStream fis = new FileInputStream("Academy.ser");
             ObjectInputStream ois = new ObjectInputStream(fis);
             o = (Academy) ois.readObject();
             ois.close();
@@ -41,11 +43,11 @@ public class Test1  {
             return;
         }catch(ClassNotFoundException cnfe)
         {
-            System.out.println("Student Class is not found.");
+            System.out.println("Academy Class is not found.");
             cnfe.printStackTrace();
             return;
         }
-        System.out.println("After deser");
+        System.out.println("After deserialization");
         o.showAll();
     }
 }
